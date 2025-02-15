@@ -1,0 +1,21 @@
+The following CSS code snippet demonstrates an uncommon error related to specificity and inheritance:
+
+```css
+.container {
+  font-size: 16px;
+}
+
+.container p {
+  font-size: 18px; /* This will override .container's font-size */
+}
+
+.container .special-paragraph {
+  font-size: 14px; /* This will override .container p's font-size */
+}
+
+.container p.special-paragraph {
+  font-size: 12px; /* This will NOT override the previous declaration.  The order in which the selectors are written doesn't directly cause this */
+}
+```
+
+The unexpected behavior occurs because the selector `.container p.special-paragraph` has the same specificity as `.container .special-paragraph`.  Despite being declared later, it does *not* override the previous declaration.
