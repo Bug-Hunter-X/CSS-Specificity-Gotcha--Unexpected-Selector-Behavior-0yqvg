@@ -1,0 +1,38 @@
+The issue can be resolved in several ways:
+
+1. **Increase Specificity:** Add more specificity to the selector that needs to override by adding an extra selector, such as an ID. 
+
+```css
+#specialParagraph {
+  font-size: 12px;
+}
+```
+
+2. **Adjust declaration order:** While generally not recommended as it is less maintainable, rearranging the order of CSS rules in a stylesheet such that the most specific rule is declared last will ensure that the correct rule is applied.
+
+```css
+.container {
+  font-size: 16px;
+}
+
+.container p {
+  font-size: 18px; 
+}
+
+.container .special-paragraph {
+  font-size: 14px; 
+}
+
+.container p.special-paragraph {
+  font-size: 12px; /* Now overrides since the selector is more specific than .container .special-paragraph*/
+}
+```
+
+3. **Use !important:** Using `!important` is generally discouraged because it overrides the cascade system, but is useful in exceptional cases.
+
+```css
+.container p.special-paragraph {
+  font-size: 12px !important; 
+}
+```
+Choose the method that best suits your project's style and maintainability. The first solution, increasing specificity, is usually the preferred approach.
